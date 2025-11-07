@@ -25,8 +25,8 @@ class DataTransformation:
             categorical_features=[
                 'Country',
                 'Gender',
-                'Demographics Question',
-                'Demographics Response',
+                'Demographics_Question',
+                'Demographics_Response',
                 'Question'
             ]
 

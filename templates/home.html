@@ -1,0 +1,201 @@
+<html>
+<head>
+    <title>Justification For Violence Against Women</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f6f7fb;
+            padding: 30px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            font-weight: bold;
+        }
+        select, input {
+            width: 100%;
+            padding: 10px;
+            margin: 6px 0 15px 0;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        h2 {
+            text-align: center;
+            color: #222;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Justification For Violence Against Women</h1>
+
+        <form action="{{ url_for('predict_datapoint')}}" method="post">
+
+            <!-- Gender -->
+            <label for="Gender">Gender</label>
+            <select name="Gender" required>
+                <option selected disabled value="">Select Gender</option>
+                <option value="M">Male</option>
+                <option value="F">Female</option>
+            </select>
+
+            <!-- Country -->
+            <label for="Country">Country</label>
+            <select name="Country" required>
+                <option selected disabled value="">Select Country</option>
+                <option value="Afghanistan">Afghanistan</option>
+                <option value="Albania">Albania</option>
+                <option value="Angola">Angola</option>
+                <option value="Armenia">Armenia</option>
+                <option value="Azerbaijan">Azerbaijan</option>
+                <option value="Bangladesh">Bangladesh</option>
+                <option value="Benin">Benin</option>
+                <option value="Bolivia">Bolivia</option>
+                <option value="Burkina Faso">Burkina Faso</option>
+                <option value="Burundi">Burundi</option>
+                <option value="Cambodia">Cambodia</option>
+                <option value="Cameroon">Cameroon</option>
+                <option value="Chad">Chad</option>
+                <option value="Colombia">Colombia</option>
+                <option value="Comoros">Comoros</option>
+                <option value="Congo">Congo</option>
+                <option value="Congo Democratic Republic">Congo Democratic Republic</option>
+                <option value="Cote d'Ivoire">Cote d'Ivoire</option>
+                <option value="Dominican Republic">Dominican Republic</option>
+                <option value="Egypt">Egypt</option>
+                <option value="Eritrea">Eritrea</option>
+                <option value="Eswatini">Eswatini</option>
+                <option value="Ethiopia">Ethiopia</option>
+                <option value="Gabon">Gabon</option>
+                <option value="Gambia">Gambia</option>
+                <option value="Ghana">Ghana</option>
+                <option value="Guatemala">Guatemala</option>
+                <option value="Guinea">Guinea</option>
+                <option value="Guyana">Guyana</option>
+                <option value="Haiti">Haiti</option>
+                <option value="Honduras">Honduras</option>
+                <option value="India">India</option>
+                <option value="Indonesia">Indonesia</option>
+                <option value="Jordan">Jordan</option>
+                <option value="Kenya">Kenya</option>
+                <option value="Kyrgyz Republic">Kyrgyz Republic</option>
+                <option value="Lesotho">Lesotho</option>
+                <option value="Liberia">Liberia</option>
+                <option value="Madagascar">Madagascar</option>
+                <option value="Malawi">Malawi</option>
+                <option value="Maldives">Maldives</option>
+                <option value="Mali">Mali</option>
+                <option value="Moldova">Moldova</option>
+                <option value="Morocco">Morocco</option>
+                <option value="Mozambique">Mozambique</option>
+                <option value="Myanmar">Myanmar</option>
+                <option value="Namibia">Namibia</option>
+                <option value="Nepal">Nepal</option>
+                <option value="Nicaragua">Nicaragua</option>
+                <option value="Niger">Niger</option>
+                <option value="Nigeria">Nigeria</option>
+                <option value="Pakistan">Pakistan</option>
+                <option value="Peru">Peru</option>
+                <option value="Philippines">Philippines</option>
+                <option value="Rwanda">Rwanda</option>
+                <option value="Sao Tome and Principe">Sao Tome and Principe</option>
+                <option value="Senegal">Senegal</option>
+                <option value="Sierra Leone">Sierra Leone</option>
+                <option value="South Africa">South Africa</option>
+                <option value="Tajikistan">Tajikistan</option>
+                <option value="Tanzania">Tanzania</option>
+                <option value="Timor-Leste">Timor-Leste</option>
+                <option value="Togo">Togo</option>
+                <option value="Turkey">Turkey</option>
+                <option value="Turkmenistan">Turkmenistan</option>
+                <option value="Uganda">Uganda</option>
+                <option value="Ukraine">Ukraine</option>
+                <option value="Yemen">Yemen</option>
+                <option value="Zambia">Zambia</option>
+                <option value="Zimbabwe">Zimbabwe</option>
+            </select>
+
+            <!-- Demographics Question -->
+            <label for="Demographics_Question">Demographics Question</label>
+            <select name="Demographics_Question" id="demQ" onchange="updateResponses()" required>
+                <option selected disabled value="">Select Question</option>
+                <option value="Marital status">Marital status</option>
+                <option value="Education">Education</option>
+                <option value="Employment">Employment</option>
+                <option value="Age">Age</option>
+                <option value="Residence">Residence</option>
+            </select>
+
+            <!-- Demographics Response -->
+            <label for="Demographics_Response">Demographics Response</label>
+            <select name="Demographics_Response" id="demR" required>
+                <option selected disabled value="">Select Response</option>
+            </select>
+
+            <!-- Question -->
+            <label for="Question">Question</label>
+            <select name="Question" required>
+                <option selected disabled value="">Select Question</option>
+                <option value="... if she burns the food">... if she burns the food</option>
+                <option value="... for at least one specific reason">... for at least one specific reason</option>
+                <option value="... if she argues with him">... if she argues with him</option>
+                <option value="... if she goes out without telling him">... if she goes out without telling him</option>
+                <option value="... if she neglects the children">... if she neglects the children</option>
+                <option value="... if she refuses to have sex with him">... if she refuses to have sex with him</option>
+            </select>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        <h2>The prediction is {{ results }}</h2>
+    </div>
+
+    <script>
+        const responses = {
+            "Marital status": ["Never married", "Widowed, divorced, separated", "Married or living together"],
+            "Education": ["Higher", "Secondary", "Primary", "No education"],
+            "Employment": ["Employed for kind", "Employed for cash", "Unemployed"],
+            "Age": ["15-24", "25-34", "35-49"],
+            "Residence": ["Urban", "Rural"]
+        };
+
+        function updateResponses() {
+            const q = document.getElementById("demQ").value;
+            const responseSelect = document.getElementById("demR");
+            responseSelect.innerHTML = "<option selected disabled value=''>Select Response</option>";
+            if (responses[q]) {
+                responses[q].forEach(r => {
+                    const opt = document.createElement("option");
+                    opt.value = r;
+                    opt.textContent = r;
+                    responseSelect.appendChild(opt);
+                });
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-Country,Gender,Demographics Question,Demographics Response,Question,Value
+Country,Gender,Demographics_Question,Demographics_Response,Question,Value
 Afghanistan,F,Marital status,Never married,... if she burns the food,14.9
 Afghanistan,F,Education,Higher,... if she burns the food,10.1
 Afghanistan,F,Education,Secondary,... if she burns the food,13.7
