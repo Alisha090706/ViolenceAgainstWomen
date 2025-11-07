@@ -17,26 +17,26 @@ def index():
 @app.route('/predictdata',methods=['GET','POST'])
 def predict_datapoint():
     def predict_datapoint():
-    try:
-        if request.method == 'GET':
-            return render_template('home.html')
-        else:
-            data = CustomData(
-                Gender=request.form.get('Gender'),
-                Country=request.form.get('Country'),
-                Demographics_Question=request.form.get('Demographics_Question'),
-                Demographics_Response=request.form.get('Demographics_Response'),
-                Question=request.form.get('Question')
-            )
-            pred_df = data.get_data_as_data_frame()
-            print(pred_df)
+        try:
+            if request.method == 'GET':
+                return render_template('home.html')
+            else:
+                data = CustomData(
+                    Gender=request.form.get('Gender'),
+                    Country=request.form.get('Country'),
+                    Demographics_Question=request.form.get('Demographics_Question'),
+                    Demographics_Response=request.form.get('Demographics_Response'),
+                    Question=request.form.get('Question')
+                )
+                pred_df = data.get_data_as_data_frame()
+                print(pred_df)
 
-            predict_pipeline = PredictPipeline()
-            results = predict_pipeline.predict(pred_df)
-            return render_template('home.html', results=results[0])
+                predict_pipeline = PredictPipeline()
+                results = predict_pipeline.predict(pred_df)
+                return render_template('home.html', results=results[0])
 
-    except Exception as e:
-        raise CustomException(e,sys)
+        except Exception as e:
+            raise CustomException(e,sys)
 
 if __name__=='__main__':
     app.run(host='0.0.0.0')
