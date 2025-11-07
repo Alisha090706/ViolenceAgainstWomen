@@ -24,7 +24,7 @@ class DataIngestion:
     def initiate_data_ingestion(self):
         logging.info("Data ingestion initiated")
         try:
-            df=pd.read_csv('notebook\data\cleaned_violence_data.csv')
+            df = pd.read_csv(os.path.join('notebook', 'data', 'cleaned_violence_data.csv'))
             logging.info("reading the dataset")
 
             os.makedirs(os.path.dirname(self.ingestion_config.train_data_path),exist_ok=True)
