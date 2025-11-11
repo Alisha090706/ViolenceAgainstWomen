@@ -15,7 +15,7 @@ The goal is to uncover patterns that reflect how social norms and gender inequal
 ---
 
 ## 🧩 Dataset
-**Source:** Derived from large-scale global survey datasets (e.g., DHS, UN Data).
+**Source:** (https://www.kaggle.com/code/gpreda/violence-against-women-and-girls)
 
 **Features:**
 - Country  
